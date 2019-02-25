@@ -1,13 +1,41 @@
 import org.apache.commons.lang3.time.StopWatch;
 
+import java.lang.reflect.Method;
 import java.util.HashMap;
 
 public class Main {
 
     public static void main(String[] args) {
-        timeIntShufflerManyIterations();
-        timeIntShufflerLongArray();
-        timeHashShufflerManyIterations();
+        //timeIntShufflerManyIterations();
+        //timeIntShufflerLongArray();
+        //timeHashShufflerManyIterations();
+        IntArrayMethodInterface timedMethod = new Shuffler();
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        timeShufflerMethodOnArray(1, 1000000, timedMethod, arr, "shuffleIntArray", "short array");
+    }
+
+    //IntArrayMethodInterface timedMethod = new Shuffler();
+
+    private static void timeShufflerMethodOnArray(int warmupIterations, int timedIterations, IntArrayMethodInterface timedMethod, int[] arr, String methodName, String inputDescription) {
+        StopWatch stopwatch = new StopWatch();
+
+        // Warm-up iterations
+        for (int i = 0; i < warmupIterations; i++) {
+            timedMethod.call(arr);
+        }
+
+        stopwatch.start();
+
+        // Timed iterations
+        for (int i = 0; i < timedIterations; i++) {
+            timedMethod.call(arr);
+        }
+
+        stopwatch.stop();
+        long timeElapsed = stopwatch.getTime();
+
+        System.out.println("Running " + methodName + " on " + inputDescription + " " + timedIterations + " times");
+        System.out.println("Execution time in milliseconds: " + timeElapsed);
     }
 
     private static void timeIntShufflerManyIterations() {

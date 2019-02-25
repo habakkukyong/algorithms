@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Shuffler {
+public class Shuffler implements IntArrayMethodInterface {
 
     // Takes an array of integers
     // Outputs an array identical to the input except that two randomly selected elements are switched around
@@ -37,6 +37,10 @@ public class Shuffler {
         }
 
         return output;
+    }
+
+    public int[] call(int[] param) {
+        return shuffleIntArray(param);
     }
 
     // Take a hash of integers
