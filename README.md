@@ -3,7 +3,7 @@ Algarrythmia
 
 ## Setup
 
-Setup in IntelliJ
+Setup in IntelliJ with Java version 11.0.2
 
 #### Timing Utilities
 

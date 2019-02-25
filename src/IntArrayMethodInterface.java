@@ -1,3 +1,3 @@
 public interface IntArrayMethodInterface {
-    public int[] call(int[] param);
+    int[] call(int[] param);
 }
