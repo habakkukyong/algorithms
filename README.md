@@ -16,6 +16,10 @@ Setup in IntelliJ
 
 #### JUnit
 
+```
+May be unnecessary
+```
+
 * Select any class with Test in its name and press `F2` to navigate to the text `@Test`
 * Press `alt` + `return`
 * Select `Add 'JUnit 5.3' to classpath`
