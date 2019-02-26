@@ -1,6 +1,8 @@
 package Reverse;
 
-public class RecurseReverse implements ReverseInterface {
+import Interfaces.IntArrayMethodInterface;
+
+public class RecurseReverse implements IntArrayMethodInterface {
     private int[] output;
 
     public int[] reverse(int[] arr) {

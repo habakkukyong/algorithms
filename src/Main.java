@@ -1,11 +1,8 @@
 import CSVWriter.CSVWriter;
+import Interfaces.IntArrayMethodInterface;
 import Reverse.ForReverse;
-import Reverse.RecurseReverse;
-import Reverse.ReverseInterface;
 import Reverse.SwapReverse;
 import org.apache.commons.lang3.time.StopWatch;
-
-import java.util.HashMap;
 
 public class Main {
 
@@ -16,21 +13,21 @@ public class Main {
         }
 //        int[] arr = {1, 2, 3};
 //        String [] testString = { "1000 2000", "2000 5000" };
-
-        ReverseInterface timedSwaRev = new ForReverse();
+//        Add test method here
+        IntArrayMethodInterface timedSwaRev = new SwapReverse();
         timeBatteryOfIterationCounts(timedSwaRev, arr);
         CSVWriter csvw = new CSVWriter();
         String[] testTimes = timeBatteryOfIterationCounts(timedSwaRev, arr);
-        csvw.write(testTimes, "For Loop Reverse", "Long Int Array");
+        csvw.write(testTimes, "Swap Reverse", "Long Int Array");
 //        SwapReverse timedSwaRev = new SwapReverse();
 //        timeReverseMethod(10000,10000000, timedSwaRev, arr, "swap reverse", "short array");
 //        ReverseInterface timedRecRev = new RecurseReverse();
 //        timeReverseMethod(10000,10000000, timedRecRev, arr, "recursive reverse", "short array");
-//        IntArrayMethodInterface timedMethod = new Shuffler();
+//        Interfaces.IntArrayMethodInterface timedMethod = new Shuffler();
 //        timeShufflerMethodOnArray(10000, 10000000, timedMethod, arr, "shuffleIntArray", "short array");
     }
 
-    private static void timeReverseMethod(int warmupIterations, int timedIterations, ReverseInterface timedMethod, int[] arr, String methodName, String inputDescription) {
+    private static void timeReverseMethod(int warmupIterations, int timedIterations, IntArrayMethodInterface timedMethod, int[] arr, String methodName, String inputDescription) {
         StopWatch stopwatch = new StopWatch();
         // Warm-up iterations
         for (int i = 0; i < warmupIterations; i++) {
@@ -73,7 +70,7 @@ public class Main {
         System.out.println("Execution time in milliseconds: " + timeElapsed);
     }
 
-    private static String[] timeBatteryOfIterationCounts(ReverseInterface timedMethod, int[] arr) {
+    private static String[] timeBatteryOfIterationCounts(IntArrayMethodInterface timedMethod, int[] arr) {
         int[] itCountBattery = new int[20];
         String[] output = new String[20];
         StopWatch stopwatch = new StopWatch();

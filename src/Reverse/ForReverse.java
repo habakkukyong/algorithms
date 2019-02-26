@@ -1,6 +1,8 @@
 package Reverse;
 
-public class ForReverse implements ReverseInterface {
+import Interfaces.IntArrayMethodInterface;
+
+public class ForReverse implements IntArrayMethodInterface {
     public static int[] reverse(int[] arr) {
         int[] output = new int[arr.length];
         for (int i = 0; i < arr.length; i++) {

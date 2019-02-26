@@ -1,3 +1,5 @@
+import Interfaces.IntArrayMethodInterface;
+
 import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
