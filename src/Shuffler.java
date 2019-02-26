@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Shuffler implements IntArrayMethodInterface {
+    public String methodName = "Shuffler";
 
     // Takes an array of integers
     // Outputs an array identical to the input except that two randomly selected elements are switched around
@@ -40,6 +41,8 @@ public class Shuffler implements IntArrayMethodInterface {
 
         return output;
     }
+
+    public String name() { return this.methodName; }
 
     public int[] call(int[] param) {
         return shuffleIntArray(param);

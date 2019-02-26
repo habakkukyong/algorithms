@@ -3,6 +3,7 @@ package Reverse;
 import Interfaces.IntArrayMethodInterface;
 
 public class RecurseReverse implements IntArrayMethodInterface {
+    public String methodName = "Recursive Reverse";
     private int[] output;
 
     public int[] reverse(int[] arr) {
@@ -16,7 +17,7 @@ public class RecurseReverse implements IntArrayMethodInterface {
         return arrayLength == 1 ? this.output : recursiveFunction(arr, arrayLength - 1);
     }
 
-    public int[] call(int[] param) {
-        return reverse(param);
-    }
+    public String name() { return this.methodName; }
+
+    public int[] call(int[] param) { return reverse(param); }
 }

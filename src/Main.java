@@ -3,6 +3,7 @@ import Interfaces.IntArrayMethodInterface;
 import Reverse.ForReverse;
 import Reverse.SwapReverse;
 import Sort.BubbleSort;
+import Sort.JavaUtilsSort;
 import org.apache.commons.lang3.time.StopWatch;
 
 public class Main {
@@ -13,15 +14,15 @@ public class Main {
             arr[i] = arr.length - (i - 1);
         }
 
-//        Add test method here
-        IntArrayMethodInterface timedMethod = new BubbleSort();
+        // Add test method here
+        IntArrayMethodInterface timedMethod = new JavaUtilsSort();
 
         timeBatteryOfIterationCounts(timedMethod, arr);
         CSVWriter csvw = new CSVWriter();
         String[] testTimes = timeBatteryOfIterationCounts(timedMethod, arr);
 
-//        Change method name and input description here
-        csvw.write(testTimes, "Bubble Sort", "Long Reversed Int Array");
+        // Change method input description here
+        csvw.write(testTimes, timedMethod.name(), "Long Reversed Int Array");
 
 //        SwapReverse timedSwaRev = new SwapReverse();
 //        timeReverseMethod(10000,10000000, timedSwaRev, arr, "swap reverse", "short array");

@@ -3,6 +3,8 @@ package Sort;
 import Interfaces.IntArrayMethodInterface;
 
 public class BubbleSort implements IntArrayMethodInterface {
+    public String methodName = "Bubble Sort";
+
     public static int[] sort(int[] arr) {
         int[] arrCopy = new int[arr.length];
         for (int i = 0; i < arr.length; i++) {
@@ -24,7 +26,7 @@ public class BubbleSort implements IntArrayMethodInterface {
         return arrCopy;
     }
 
-    public int[] call(int[] param) {
-        return sort(param);
-    }
+    public String name() { return this.methodName; }
+
+    public int[] call(int[] param) { return sort(param); }
 }

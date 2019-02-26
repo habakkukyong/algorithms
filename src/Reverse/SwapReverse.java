@@ -3,6 +3,7 @@ package Reverse;
 import Interfaces.IntArrayMethodInterface;
 
 public class SwapReverse implements IntArrayMethodInterface {
+    public String methodName = "Swap Reverse";
 
     public static int[] reverse(int[] arr) {
 
@@ -22,7 +23,7 @@ public class SwapReverse implements IntArrayMethodInterface {
         return arrCopy;
     }
 
-    public int[] call(int[] param) {
-        return reverse(param);
-    }
+    public String name() { return this.methodName; }
+
+    public int[] call(int[] param) { return reverse(param); }
 }
