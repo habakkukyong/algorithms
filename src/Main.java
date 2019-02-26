@@ -1,5 +1,6 @@
 import Reverse.RecurseReverse;
 import Reverse.ReverseInterface;
+import Reverse.SwapReverse;
 import org.apache.commons.lang3.time.StopWatch;
 
 import java.util.HashMap;
@@ -7,7 +8,11 @@ import java.util.HashMap;
 public class Main {
 
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        //int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] arr = {1, 2, 3};
+
+        SwapReverse timedSwaRev = new SwapReverse();
+        timeReverseMethod(10000,10000000, timedSwaRev, arr, "swap reverse", "short array");
         ReverseInterface timedRecRev = new RecurseReverse();
         timeReverseMethod(10000,10000000, timedRecRev, arr, "recursive reverse", "short array");
         IntArrayMethodInterface timedMethod = new Shuffler();
