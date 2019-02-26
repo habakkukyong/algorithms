@@ -5,8 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 public class CSVWriter {
-    public static void write(String[] rows) {
-        try (PrintWriter writer = new PrintWriter(new File("test.csv"))) {
+    public static void write(String[] rows, String methodName, String inputDescription) {
+        String pathname = "";
+        pathname += methodName + " on " + inputDescription + ".csv";
+        try (PrintWriter writer = new PrintWriter(new File(pathname))) {
             StringBuilder sb = new StringBuilder();
 
             //name columns

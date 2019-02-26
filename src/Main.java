@@ -1,4 +1,5 @@
 import CSVWriter.CSVWriter;
+import Reverse.ForReverse;
 import Reverse.RecurseReverse;
 import Reverse.ReverseInterface;
 import Reverse.SwapReverse;
@@ -16,11 +17,11 @@ public class Main {
 //        int[] arr = {1, 2, 3};
 //        String [] testString = { "1000 2000", "2000 5000" };
 
-        SwapReverse timedSwaRev = new SwapReverse();
+        ReverseInterface timedSwaRev = new ForReverse();
         timeBatteryOfIterationCounts(timedSwaRev, arr);
         CSVWriter csvw = new CSVWriter();
         String[] testTimes = timeBatteryOfIterationCounts(timedSwaRev, arr);
-        csvw.write(testTimes);
+        csvw.write(testTimes, "For Loop Reverse", "Long Int Array");
 //        SwapReverse timedSwaRev = new SwapReverse();
 //        timeReverseMethod(10000,10000000, timedSwaRev, arr, "swap reverse", "short array");
 //        ReverseInterface timedRecRev = new RecurseReverse();
