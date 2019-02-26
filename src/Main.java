@@ -2,6 +2,7 @@ import CSVWriter.CSVWriter;
 import Interfaces.IntArrayMethodInterface;
 import Reverse.ForReverse;
 import Reverse.SwapReverse;
+import Sort.BubbleSort;
 import org.apache.commons.lang3.time.StopWatch;
 
 public class Main {
@@ -9,16 +10,19 @@ public class Main {
     public static void main(String[] args) {
         int[] arr = new int[10000];
         for (int i = 1; i < 10000; i++) {
-            arr[i] = i;
+            arr[i] = arr.length - (i - 1);
         }
-//        int[] arr = {1, 2, 3};
-//        String [] testString = { "1000 2000", "2000 5000" };
+
 //        Add test method here
-        IntArrayMethodInterface timedSwaRev = new SwapReverse();
-        timeBatteryOfIterationCounts(timedSwaRev, arr);
+        IntArrayMethodInterface timedMethod = new BubbleSort();
+
+        timeBatteryOfIterationCounts(timedMethod, arr);
         CSVWriter csvw = new CSVWriter();
-        String[] testTimes = timeBatteryOfIterationCounts(timedSwaRev, arr);
-        csvw.write(testTimes, "Swap Reverse", "Long Int Array");
+        String[] testTimes = timeBatteryOfIterationCounts(timedMethod, arr);
+
+//        Change method name and input description here
+        csvw.write(testTimes, "Bubble Sort", "Long Reversed Int Array");
+
 //        SwapReverse timedSwaRev = new SwapReverse();
 //        timeReverseMethod(10000,10000000, timedSwaRev, arr, "swap reverse", "short array");
 //        ReverseInterface timedRecRev = new RecurseReverse();
