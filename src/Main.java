@@ -9,17 +9,24 @@ import java.util.HashMap;
 public class Main {
 
     public static void main(String[] args) {
-        //int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        int[] arr = {1, 2, 3};
-        String [] testString = { "1000 2000", "2000 5000" };
-        CSVWriter csvw = new CSVWriter();
-        csvw.write(testString);
+        int[] arr = new int[10000];
+        for (int i = 1; i < 10000; i++) {
+            arr[i] = i;
+        }
+//        int[] arr = {1, 2, 3};
+//        String [] testString = { "1000 2000", "2000 5000" };
+
         SwapReverse timedSwaRev = new SwapReverse();
-        timeReverseMethod(10000,10000000, timedSwaRev, arr, "swap reverse", "short array");
-        ReverseInterface timedRecRev = new RecurseReverse();
-        timeReverseMethod(10000,10000000, timedRecRev, arr, "recursive reverse", "short array");
-        IntArrayMethodInterface timedMethod = new Shuffler();
-        timeShufflerMethodOnArray(10000, 10000000, timedMethod, arr, "shuffleIntArray", "short array");
+        timeBatteryOfIterationCounts(timedSwaRev, arr);
+        CSVWriter csvw = new CSVWriter();
+        String[] testTimes = timeBatteryOfIterationCounts(timedSwaRev, arr);
+        csvw.write(testTimes);
+//        SwapReverse timedSwaRev = new SwapReverse();
+//        timeReverseMethod(10000,10000000, timedSwaRev, arr, "swap reverse", "short array");
+//        ReverseInterface timedRecRev = new RecurseReverse();
+//        timeReverseMethod(10000,10000000, timedRecRev, arr, "recursive reverse", "short array");
+//        IntArrayMethodInterface timedMethod = new Shuffler();
+//        timeShufflerMethodOnArray(10000, 10000000, timedMethod, arr, "shuffleIntArray", "short array");
     }
 
     private static void timeReverseMethod(int warmupIterations, int timedIterations, ReverseInterface timedMethod, int[] arr, String methodName, String inputDescription) {
@@ -65,84 +72,26 @@ public class Main {
         System.out.println("Execution time in milliseconds: " + timeElapsed);
     }
 
-    private static void timeIntShufflerManyIterations() {
+    private static String[] timeBatteryOfIterationCounts(ReverseInterface timedMethod, int[] arr) {
+        int[] itCountBattery = new int[20];
+        String[] output = new String[20];
         StopWatch stopwatch = new StopWatch();
+        long timeElapsed;
 
-        // Pre-requisites for code which is to be timed
-        Shuffler shuffler = new Shuffler();
-        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-
-        // Warm-up iterations
-        for (int i = 0; i < 10000; i++) {
-            shuffler.shuffleIntArray(arr);
+        for (int i = 1; i < 21; i++) {
+            itCountBattery[i - 1] = i * 5000;
         }
 
-        stopwatch.start();
-
-        // Run code being timed here
-        for (int i = 0; i < 10000000; i++) {
-            shuffler.shuffleIntArray(arr);
+        for (int i = 0; i < 20; i++) {
+            stopwatch.start();
+            for (int j = 0; j < itCountBattery[i]; j++){
+                timedMethod.call(arr);
+            }
+            stopwatch.stop();
+            timeElapsed = stopwatch.getTime();
+            output[i] = (itCountBattery[i] + " " + timeElapsed);
+            stopwatch.reset();
         }
-
-        stopwatch.stop();
-        long timeElapsed = stopwatch.getTime();
-        System.out.println("Running shuffleIntArray on short array many times");
-        System.out.println("Execution time in milliseconds: " + timeElapsed);
-    }
-
-    private static void timeIntShufflerLongArray () {
-        StopWatch stopwatch = new StopWatch();
-
-        // Pre-requisites for code which is to be timed
-        Shuffler shuffler = new Shuffler();
-        int arrayLength = 10000;
-        int[] arr = new int[arrayLength];
-        for (int i = 0; i < arrayLength; i++) { arr[i] = i; }
-
-        // Warm-up iterations
-        for (int i = 0; i < 100000; i++) {
-        shuffler.shuffleIntArray(arr);
-        }
-
-        stopwatch.start();
-
-        // Run code being timed here
-        for (int i = 0; i < 100000; i++) {
-            shuffler.shuffleIntArray(arr);
-        }
-
-        stopwatch.stop();
-        long timeElapsed = stopwatch.getTime();
-        System.out.println("Running shuffleIntArray on long array");
-        System.out.println("Execution time in milliseconds: " + timeElapsed);
-    }
-
-    private static void timeHashShufflerManyIterations() {
-        StopWatch stopwatch = new StopWatch();
-
-        // Pre-requisites for code which is to be timed
-        Shuffler shuffler = new Shuffler();
-        HashMap<Integer, Integer> hash = new HashMap<>();
-        for (int i = 0; i < 10; i++) {
-            hash.put(i, i + 1);
-        }
-
-        // Warm-up iterations
-        for (int i = 0; i < 10000; i++) {
-            shuffler.shuffleHashMap(hash);
-        }
-
-        stopwatch.start();
-
-        // Run code being timed here
-        for (int i = 0; i < 10000000; i++) {
-            shuffler.shuffleHashMap(hash);
-        }
-
-        stopwatch.stop();
-        long timeElapsed = stopwatch.getTime();
-        HashMap<Integer, Integer> jim = shuffler.shuffleHashMap(hash);
-        System.out.println("Running shuffleHashMap on short hash many times");
-        System.out.println("Execution time in milliseconds: " + timeElapsed);
+        return output;
     }
 }
