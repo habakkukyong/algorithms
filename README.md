@@ -5,6 +5,20 @@ Algarrythmia
 
 Setup in IntelliJ with Java version 11.0.2
 
+#### JavaFX
+
+```
+Does not work
+```
+
+* Press <kbd>⌘ cmd</kbd> + <kbd>,</kbd> to bring up preferences
+* Select `Plugins`
+* Ensure that the JavaFX plugin is enabled
+* Download JavaFX11 SDK from https://openjfx.io
+* Download Scene Builder while you're there
+* Make a copy of your JDK and rename it jdk-11.0.2.jfx.jdk
+* Extract the JavaFX SDK contents and merge legal and lib into your JDK's Home directory
+
 #### Timing Utilities
 
 * Download Apache Commons Lang utilities from https://commons.apache.org/proper/commons-lang/
@@ -24,8 +38,4 @@ May be unnecessary
 * Press <kbd>⌥ alt</kbd> + <kbd>⏎ return</kbd>
 * Select `Add 'JUnit 5.3' to classpath`
 
-#### JavaFX
 
-```
-Placeholder
-```
