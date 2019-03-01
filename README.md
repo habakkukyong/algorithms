@@ -1,6 +1,11 @@
 Algarrythmia
 ============
 
+* Packaged methods can be tested on variables set in the main method
+* The main method creates a csv file in the local repo's root directory
+* The csv file shows the time it took to run the method for various repetition counts
+* The repetition counts are intervals of 5K between 5K and 100K
+
 ## Setup
 
 Setup in IntelliJ with Java version 11.0.2
@@ -16,8 +21,17 @@ Does not work
 * Ensure that the JavaFX plugin is enabled
 * Download JavaFX11 SDK from https://openjfx.io
 * Download Scene Builder while you're there
-* Make a copy of your JDK and rename it jdk-11.0.2.jfx.jdk
-* Extract the JavaFX SDK contents and merge legal and lib into your JDK's Home directory
+* Extract the JavaFX SDK contents somewhere and copy the path to the contained lib directory to clipboard
+* In File > New select `Project`
+* In JavaFX ensure you have the correct SDK selected and select `JavaFX Project`
+* Press <kbd>⌘ cmd</kbd> + <kbd>,</kbd> to bring up preferences
+* In Module select the Dependencies tab, click the `+` button
+* In `2 Libraries` select `Java`
+* Navigate to the lib directory of the JavaFX SDK and click `Open`
+* Rename the library something like 'JavaFX'
+* Click `Ok` twice to close both menus
+* In Run > Edit Configurations > VM Options enter `--module-path="PWD" --add-modules=javafx.controls` replacing PWD with the path to the JavaFX SDK lib directory
+
 
 #### Timing Utilities
 

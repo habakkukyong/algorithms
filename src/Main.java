@@ -4,32 +4,31 @@ import Reverse.ForReverse;
 import Reverse.SwapReverse;
 import Sort.BubbleSort;
 import Sort.JavaUtilsSort;
+import Sort.QuickSort;
 import org.apache.commons.lang3.time.StopWatch;
 
 public class Main {
 
     public static void main(String[] args) {
+
         int[] arr = new int[10000];
         for (int i = 1; i < 10000; i++) {
             arr[i] = arr.length - (i - 1);
         }
 
-        // Add test method here
+        int[] shortArr = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+
+        // Add test method here replacing *** with the method you wish to test
+        // IntArrayMethodInterface timedMethod = new ***();
         IntArrayMethodInterface timedMethod = new JavaUtilsSort();
 
-        timeBatteryOfIterationCounts(timedMethod, arr);
+        timeBatteryOfIterationCounts(timedMethod, shortArr);
         CSVWriter csvw = new CSVWriter();
-        String[] testTimes = timeBatteryOfIterationCounts(timedMethod, arr);
+        String[] testTimes = timeBatteryOfIterationCounts(timedMethod, shortArr);
 
-        // Change method input description here
-        csvw.write(testTimes, timedMethod.name(), "Long Reversed Int Array");
-
-//        SwapReverse timedSwaRev = new SwapReverse();
-//        timeReverseMethod(10000,10000000, timedSwaRev, arr, "swap reverse", "short array");
-//        ReverseInterface timedRecRev = new RecurseReverse();
-//        timeReverseMethod(10000,10000000, timedRecRev, arr, "recursive reverse", "short array");
-//        Interfaces.IntArrayMethodInterface timedMethod = new Shuffler();
-//        timeShufflerMethodOnArray(10000, 10000000, timedMethod, arr, "shuffleIntArray", "short array");
+        // Change method input description here replacing *** with  a description of the input variable
+        // csvw.write(testTimes, timedMethod.name(), "***");
+        csvw.write(testTimes, timedMethod.name(), "Short Reversed Int Array");
     }
 
     private static void timeReverseMethod(int warmupIterations, int timedIterations, IntArrayMethodInterface timedMethod, int[] arr, String methodName, String inputDescription) {
